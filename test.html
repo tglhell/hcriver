@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html lang="ko">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="Keywords" content="html template site" />
+	<meta name="Description" content="html template 종류별 정리" />
+	<title> Main Page </title>
+	<link rel="shortcut icon" href="/assets/images/favicon.png" type="image/x-icon">
+	<link rel="stylesheet" href="/assets/css/common.css">
+	<link rel="stylesheet" href="/assets/css/content.css">
+	<script src="/assets/js/lib/jquery.js"></script>
+	<script src="/assets/js/lib/jquery-ui.js"></script>
+	<script src="/assets/js/lib/jquery.nicescroll.min.js"></script>
+	<script src="/assets/js/common.js"></script>
+</head>
+
+<body>
+	<div class="wrap">
+		<!-- s : container -->
+		<div class="container">
+			<div class="hover-list-wrap">
+				<ul class="hover-list-outer">
+					<li>
+						<div class="hover-list-item">
+							<p>hover item 01</p>
+						</div>
+					</li>
+					<li>
+						<div class="hover-list-item">
+							<p>hover item 02</p>
+						</div>
+					</li>
+					<li>
+						<div class="hover-list-item">
+							<p>hover item 03</p>
+						</div>
+					</li>
+					<li>
+						<div class="hover-list-item">
+							<p>hover item 04</p>
+						</div>
+					</li>
+				</ul>
+
+				<div class="hover-list-cont">
+					<div class="hover-cont-item">
+						<p>hover text 01</p>
+					</div>
+					<div class="hover-cont-item">
+						<p>hover text 02 hover text 02</p>
+					</div>
+					<div class="hover-cont-item">
+						<p>hover text 03 hover text 03 hover text 03 hover text 03</p>
+					</div>
+					<div class="hover-cont-item">
+						<p>hover text 04 hover text 04 hover text 04 hover text 04 hover text 04 hover text 04 hover text 04 hover text 04</p>
+					</div>
+				</div>
+			</div>
+			<style>
+				*,
+				*:before, *:hover, *:after {
+					transition: none;
+				}
+
+				.wrap {
+					padding: 10px 20px;
+				}
+
+				/* hover list */
+				.hover-list-outer {
+					display: inline-block;
+					width: 1120px;
+					border: 1px solid #000;
+					border-width: 1px 1px 1px 0;
+					font-size: 0;
+				}
+				
+				.hover-list-outer li {
+					display: inline-block;
+					widtH: 25%;
+					vertical-align: top;
+					cursor: pointer;
+				}
+
+				.hover-list-outer li .hover-list-item {
+					padding: 5px 10px;
+					border-left: 1px solid #000;
+					font-size: 14px;
+					color: #000;
+					line-height: 1.3;
+					text-align: center;
+				}
+
+				.hover-list-outer li.on .hover-list-item {
+					background: #000;
+					color: #fff;
+				}
+
+				/* hover list cont */
+				.hover-list-cont {
+					position: relative;
+					margin-top: 30px;
+				}
+
+				.hover-list-cont .hover-cont-item {
+					position: absolute;
+					display: none;
+					padding: 5px 10px;
+					border: 1px solid #999;
+					border-radius: 7px;
+				}
+
+				.hover-list-cont .hover-cont-item.active {
+					display: inline-block;
+				}
+			</style>
+			<script>
+				$(function(){
+					$('.hover-list-outer li').on('click', function(){
+						let _thisIdx = $(this).index();
+						let itemWid = $(this).outerWidth();
+						let contItem = $('.hover-list-cont .hover-cont-item');
+						let contItemWid = contItem.eq(_thisIdx).outerWidth();
+
+						$(this).addClass('on').siblings().removeClass('on');
+						contItem.eq(_thisIdx).addClass('active').siblings().removeClass('active');
+						if (itemWid > contItemWid) {
+							posItem = (itemWid - contItemWid) / 2;
+							contItem.eq(_thisIdx).css('left', (itemWid * _thisIdx) + posItem);
+						} else {
+							posItem = (contItemWid - itemWid) / 2;
+							contItem.eq(_thisIdx).css('left', (itemWid * _thisIdx) - posItem);
+						}
+					});
+				});
+			</script>
+		</div>
+		<!-- e : container -->
+
+		<!-- s : footer -->
+		<div class="footer">
+
+		</div>
+		<!-- e : footer -->
+	</div>
+</body>
+
+</html>
