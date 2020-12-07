@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html lang="ko">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="Keywords" content="html template site" />
+	<meta name="Description" content="html template 종류별 정리" />
+	<title> Main Page </title>
+	<link rel="shortcut icon" href="/hcriver/assets/images/favicon.png" type="image/x-icon">
+	<link rel="stylesheet" href="/hcriver/assets/css/common.css">
+	<link rel="stylesheet" href="/hcriver/assets/css/content.css">
+	<script src="/hcriver/assets/js/lib/jquery.js"></script>
+	<script src="/hcriver/assets/js/lib/jquery-ui.js"></script>
+	<script src="/hcriver/assets/js/lib/jquery.nicescroll.min.js"></script>
+	<script src="/hcriver/assets/js/common.js"></script>
+	<script>
+		$(function(){
+			var ctx = document.querySelector('.my-canvas-01').getContext('2d');
+			// ctx.fillStyle = "rgb(200,0,0)";
+			// ctx.fillRect (10, 10, 50, 50);
+
+			// ctx.fillStyle = "rgba(0, 0, 200, 0.5)";
+			// ctx.fillRect (30, 30, 50, 50);
+
+			// ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
+			// ctx.fillRect (80, 80, 50, 50);
+
+			// ctx.fillStyle = "rgba(0, 94, 0, 0.5)";
+			// ctx.fillRect (50, 50, 50, 50);
+
+			ctx.beginPath();
+			ctx.arc(75, 75, 50, 0, Math.PI * 2, true); // Outer circle
+			ctx.moveTo(110, 75);
+			ctx.arc(75, 75, 35, 0, Math.PI, false);  // Mouth (clockwise)
+			ctx.moveTo(65, 65);
+			ctx.arc(60, 65, 5, 0, Math.PI * 2, true);  // Left eye
+			ctx.moveTo(95, 65);
+			ctx.arc(90, 65, 5, 0, Math.PI * 2, true);  // Right eye
+			ctx.stroke();
+
+			$('.btn-draw').click(function(){
+				var ctx = document.querySelector('.my-canvas-02').getContext('2d');
+				var end = Math.PI * 2;
+				for (var i = 0; i < 100; i++) {
+					draw(i);
+				}
+
+				function draw(delay) {
+					setTimeout(function() {
+						ctx.clearRect(0, 0, 200, 200);
+						ctx.beginPath();
+						ctx.arc(100, 100, 90, 0, end / 99 * delay, false);
+						ctx.stroke();
+					}, delay * 20);
+				}
+			});
+		});
+	</script>
+	<style>
+		canvas {border:1px solid #000;vertical-align:top;}
+		.my-canvas-02 {margin-left:20px;}
+		.btn-draw {padding:5px 10px;margin-left:10px;border:1px solid #000;}
+	</style>
+</head>
+
+<body>
+	<div class="wrap">
+		<!-- s : header -->
+		<div class="header">
+			<div class="header-cont">
+				<h1 class="h-title"><a href="/hcriver/index.html">Main Page</a></h1>
+				<a href="/hcriver/guide/tab.html" class="page-btn btn-prev" title="Tab">Tab</a>
+				<a href="/hcriver/guide/scroll.html" class="page-btn btn-next" title="Scroll">Scroll</a>
+			</div> 
+		</div>
+		<!-- e : header -->
+
+		<!-- s : container -->
+		<div class="container">
+			<div class="top-img" ir>
+				<picture>
+					<source srcset="/hcriver/assets/images/content/img_top_image_pc.jpg" media="(min-width: 768px)">
+					<source srcset="/hcriver/assets/images/content/img_top_image_m.jpg" media="(max-width: 767px)">
+					<img src="/hcriver/assets/images/content/img_top_image.jpg" alt="sky">
+				</picture>
+			</div>
+
+			<div class="content">
+				<h2 class="c-title" ir>Template Page List</h2>
+
+				<div class="page-name-outer">
+					<canvas class="my-canvas-01" width="150" height="150"></canvas>
+					<canvas class="my-canvas-02" width="200" height="200"></canvas>
+					<button class="btn-draw">Draw</button>
+				</div>
+					
+			</div>
+		</div>
+		<!-- e : container -->
+
+		<!-- s : footer -->
+		<div class="footer">
+
+		</div>
+		<!-- e : footer -->
+	</div>
+</body>
+
+</html>

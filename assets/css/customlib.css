@@ -1,0 +1,73 @@
+/* Layer Popup */
+.layerPopupWrap .nicescroll-rails,
+.layerPopupWrap .nicescroll-rails * {transition:none;}
+
+/* Swiper */
+[class*="swiper-button"] {position:absolute;top:50%;width:30px;height:56px;margin-top:-29px;background:none;}
+[class*="swiper-button"]:active,
+[class*="swiper-button"]:focus {outline:none;}
+.swiper-container .swiper-slide {display:flex;justify-content:center;align-items:center;}
+.swiper-button-prev {left:-60px;}
+.swiper-button-prev:before,
+.swiper-button-prev:after {content:'';position:absolute;left:15px;width:1px;height:40px;background:black;}
+.swiper-button-prev:before {top:-5px;-webkit-transform:rotate(45deg);transform:rotate(45deg);}
+.swiper-button-prev:after {top:23px;-webkit-transform:rotate(135deg);transform:rotate(135deg);}
+.swiper-button-next {right:-60px;}
+.swiper-button-next:before,
+.swiper-button-next:after {content:'';position:absolute;right:15px;width:1px;height:40px;background:black;}
+.swiper-button-next:before {top:-5px;-webkit-transform:rotate(-45deg);transform:rotate(-45deg);}
+.swiper-button-next:after {top:23px;-webkit-transform:rotate(-135deg);transform:rotate(-135deg);}
+[class*="swiper-button"]:hover:before,
+[class*="swiper-button"]:hover:after,
+[class*="swiper-button"]:active:before,
+[class*="swiper-button"]:active:after,
+[class*="swiper-button"]:focus:before,
+[class*="swiper-button"]:focus:after {background:#ff0000;}
+
+.swiper-pagination {bottom:-10px;right:0;display:none;margin:-2px;text-align:right;}
+.swiper-pagination-bullet {opacity:1;width:30px;height:1px;margin:2px;border-radius:0;background:#999;}
+.swiper-pagination-bullet.swiper-pagination-bullet-active {background:#007eff;}
+.swiper-pagination-bullet:active,
+.swiper-pagination-bullet:focus {outline:none;}
+
+.swiper-outer-box {position:relative;margin-top:30px;}
+.swiper1 .swiper-container {height:200px;}
+.swiper1 .swiper-container .swiper-slide {transition:all .7s ease-in-out;width:100%;border:1px solid #000;background:rgba(0,0,0,.03);box-sizing:border-box;}
+.swiper1 .swiper-container .swiper-slide:hover {background:rgba(0,0,0,.08);text-shadow:1px 2px 0 rgba(0,0,0,.1);}
+.swiper2 .swiper-container {height:100px;}
+.swiper2 .swiper-container .swiper-slide {transition:all .5s ease-in-out;width:100px;height:100px;padding:5px;background:#999;justify-content:start;align-items:start;font-size:11px;color:#fff;text-shadow:1px 2px  0 rgba(0,0,0,.3);line-height:14px;}
+.swiper2 .swiper-container .swiper-slide:hover {background:rgba(153,153,153,.7);}
+.swiper3 .swiper-container .swiper-slide {background:rgba(0,0,0,.03);}
+.swiper4 .swiper-container {height:100px;}
+.swiper4 .swiper-container .swiper-slide {font-size:12px;line-height:18px;text-shadow:1px 2px 0 rgba(0,0,0,.1);}
+.swiper4 .swiper-container .swiper-slide:nth-child(odd) {background:rgba(0,0,0,.05);}
+.swiper4 .swiper-container .swiper-slide:nth-child(even) {background:rgba(255,0,0,.05);}
+
+/* datepicker */
+.ui-widget {font-family:'Nanum Gothic', Malgun Gothic, Apple-Gothic, Tahoma, Helvetica, sans-serif;}
+.ui-widget.ui-widget-content {margin:5px 0 0 0;border-radius:7px;}
+.ui-widget-header {border:0;background:none;}
+.ui-datepicker th {font-size:13px;font-weight:400;color:#444;}
+.ui-datepicker .ui-datepicker-title select::-ms-expand {display:none;}
+.ui-datepicker .ui-datepicker-title select {height:26px;padding-left:10px;border-color:#ddd;border-radius:7px;font-size:14px;color:#000;line-height:26px;appearance:none;-webkit-appearance:none;background:url(/hcriver/assets/images/jquery-ui/icon/ico_month_down.png) no-repeat right+5px center;}
+.ui-datepicker select.ui-datepicker-year {width:45%;margin-right:10px;}
+.ui-datepicker select.ui-datepicker-month {width:35%;margin-left:10px;}
+.ui-datepicker .ui-datepicker-prev,
+.ui-datepicker .ui-datepicker-next {transition:all .5s ease-in-out;top:5px;border:1px solid #fff;}
+.ui-datepicker .ui-datepicker-prev span {width:6px;height:9px;margin:-5px 0 0 -3px;background:url(/hcriver/assets/images/jquery-ui/icon/ico_month_prev.png) no-repeat left top;}
+.ui-datepicker .ui-datepicker-prev-hover {top:5px;left:2px;background:none;}
+.ui-datepicker .ui-datepicker-next span {width:6px;height:9px;margin:-5px 0 0 -3px;background:url(/hcriver/assets/images/jquery-ui/icon/ico_month_next.png) no-repeat left top;}
+.ui-datepicker .ui-datepicker-next-hover {top:5px;right:2px;background:none;}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active {width:24px;height:24px;margin:0 auto;border:0;background:#fff;font-size:13px;color:#7e7e7e;text-align:center;}
+.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {border-radius:5px;background:#1597ee;color:#fff;}
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus, .ui-button:hover, .ui-button:focus {transition:all .5s ease-in-out;border-color:#ddd;}
+.ui-datepicker-trigger {width:26px;height:26px;margin-left:3px;line-height:26px;vertical-align:middle;}
+
+@media (max-width:1140px) {
+	[class*="swiper-button"] {display:none;}
+	.swiper-pagination {display:block;}
+}
+
+@media (max-width:767px) {
+	.swiper2 {display:none;}
+}
