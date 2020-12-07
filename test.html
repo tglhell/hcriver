@@ -6,13 +6,13 @@
 	<meta name="Keywords" content="html template site" />
 	<meta name="Description" content="html template 종류별 정리" />
 	<title> Main Page </title>
-	<link rel="shortcut icon" href="/assets/images/favicon.png" type="image/x-icon">
-	<link rel="stylesheet" href="/assets/css/common.css">
-	<link rel="stylesheet" href="/assets/css/content.css">
-	<script src="/assets/js/lib/jquery.js"></script>
-	<script src="/assets/js/lib/jquery-ui.js"></script>
-	<script src="/assets/js/lib/jquery.nicescroll.min.js"></script>
-	<script src="/assets/js/common.js"></script>
+	<link rel="shortcut icon" href="/hcriver/assets/images/favicon.png" type="image/x-icon">
+	<link rel="stylesheet" href="/hcriver/assets/css/common.css">
+	<link rel="stylesheet" href="/hcriver/assets/css/content.css">
+	<script src="/hcriver/assets/js/lib/jquery.js"></script>
+	<script src="/hcriver/assets/js/lib/jquery-ui.js"></script>
+	<script src="/hcriver/assets/js/lib/jquery.nicescroll.min.js"></script>
+	<script src="/hcriver/assets/js/common.js"></script>
 </head>
 
 <body>
@@ -73,7 +73,6 @@
 					display: inline-block;
 					width: 1120px;
 					border: 1px solid #000;
-					border-width: 1px 1px 1px 0;
 					font-size: 0;
 				}
 				
@@ -85,12 +84,26 @@
 				}
 
 				.hover-list-outer li .hover-list-item {
+					position: relative;
 					padding: 5px 10px;
-					border-left: 1px solid #000;
 					font-size: 14px;
 					color: #000;
 					line-height: 1.3;
 					text-align: center;
+				}
+
+				.hover-list-outer li .hover-list-item:after {
+					content: '';
+					position: absolute;
+					top: 0;
+					bottom: 0;
+					right: 0;
+					width: 1px;
+					background: #000;
+				}
+
+				.hover-list-outer li:last-child .hover-list-item:after {
+					content: none;
 				}
 
 				.hover-list-outer li.on .hover-list-item {
@@ -118,20 +131,25 @@
 			</style>
 			<script>
 				$(function(){
-					$('.hover-list-outer li').on('click', function(){
+					$('.hover-list-outer li').on('mouseenter mouseleave', function(e){
 						let _thisIdx = $(this).index();
-						let itemWid = $(this).outerWidth();
+						let itemWid = $(this).outerWidth(true);
 						let contItem = $('.hover-list-cont .hover-cont-item');
 						let contItemWid = contItem.eq(_thisIdx).outerWidth();
 
-						$(this).addClass('on').siblings().removeClass('on');
-						contItem.eq(_thisIdx).addClass('active').siblings().removeClass('active');
-						if (itemWid > contItemWid) {
-							posItem = (itemWid - contItemWid) / 2;
-							contItem.eq(_thisIdx).css('left', (itemWid * _thisIdx) + posItem);
+						if (e.type == 'mouseenter') {
+							$(this).addClass('on').siblings().removeClass('on');
+							contItem.eq(_thisIdx).addClass('active').siblings().removeClass('active');
+							if (itemWid > contItemWid) {
+								posItem = (itemWid - contItemWid) / 2;
+								contItem.eq(_thisIdx).css('left', (itemWid * _thisIdx) + posItem);
+							} else {
+								posItem = (contItemWid - itemWid) / 2;
+								contItem.eq(_thisIdx).css('left', (itemWid * _thisIdx) - posItem);
+							}
 						} else {
-							posItem = (contItemWid - itemWid) / 2;
-							contItem.eq(_thisIdx).css('left', (itemWid * _thisIdx) - posItem);
+							$(this).removeClass('on');
+							contItem.eq(_thisIdx).removeClass('active');
 						}
 					});
 				});
