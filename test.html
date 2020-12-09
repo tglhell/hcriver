@@ -52,7 +52,7 @@
 						<p>hover text 03 hover text 03 hover text 03 hover text 03</p>
 					</div>
 					<div class="hover-cont-item">
-						<p>hover text 04 hover text 04 hover text 04 hover text 04 hover text 04 hover text 04 hover text 04 hover text 04</p>
+						<p>hover text 04 hover text 04 hover text 04 hover text 04 hover text 04 hover text 04 hover text 04 hover text 04 </p>
 					</div>
 				</div>
 			</div>
@@ -64,6 +64,10 @@
 
 				.wrap {
 					padding: 10px 20px;
+				}
+
+				.other-style {
+					margin-top: 200px;
 				}
 
 				/* hover list */
@@ -154,6 +158,8 @@
 
 				.hover-list-cont .hover-cont-item > p {
 					position: relative;
+					display: inline-block;
+					max-width: 630px;
 				}
 
 				.hover-list-cont .hover-cont-item > p:before {
@@ -169,29 +175,132 @@
 			</style>
 			<script>
 				$(function(){
-					$('.hover-list-outer li').on('mouseenter mouseleave', function(e){
-						let _this = $(this);
-						let _thisIdx = _this.index();
-						let itemWid = _this.width();
-						let contItem = $('.hover-list-cont .hover-cont-item');
-						let contItemWid = contItem.eq(_thisIdx).outerWidth();
+					let tarItem = $('.hover-list-outer li');
+					tarItem.on('mouseenter mouseleave', function(e){
+						if (!$(this).closest('.hover-list-wrap').hasClass('other-style')) {
+							let _this = $(this);
+							let _thisIdx = _this.index();
+							let itemWid = _this.width();
+							let contWrap = _this.closest('.hover-list-wrap');
+							let contItem = contWrap.find('.hover-list-cont .hover-cont-item');
+							let contItemWid = contItem.eq(_thisIdx).outerWidth();
 
-						if (e.type == 'mouseenter') {
-							_this.addClass('on').siblings().removeClass('on');
-							contItem.eq(_thisIdx).addClass('active').siblings().removeClass('active');
-							if (itemWid > contItemWid) {
-								posItem = -(itemWid - contItemWid) / 2;
+							if (e.type == 'mouseenter') {
+								_this.addClass('on').siblings().removeClass('on');
+								contItem.eq(_thisIdx).addClass('active').siblings().removeClass('active');
+								if (itemWid > contItemWid) {
+									posItem = -(itemWid - contItemWid) / 2;
+								} else {
+									posItem = (contItemWid - itemWid) / 2;
+								}
+								contItem.eq(_thisIdx).css('left', (itemWid * _thisIdx) - posItem);
 							} else {
-								posItem = (contItemWid - itemWid) / 2;
+								_this.removeClass('on');
+								contItem.eq(_thisIdx).removeClass('active');
 							}
-							contItem.eq(_thisIdx).css('left', (itemWid * _thisIdx) - posItem);
-						} else {
-							_this.removeClass('on');
-							contItem.eq(_thisIdx).removeClass('active');
 						}
+					});
+
+					function itemSize () {
+						let tarItemWid = tarItem.width();
+						if ($(window).width() <= 1400) {
+							$('.hover-list-wrap:not(.other-style)').find('.hover-cont-item').css('max-width', tarItemWid);
+						} else {
+							$('.hover-list-wrap:not(.other-style)').find('.hover-cont-item').css('max-width', 'none');
+						}
+					}
+					itemSize ();
+
+					$(window).resize(function(){
+						let tarItemWid = tarItem.width();
+						itemSize ();
 					});
 				});
 			</script>
+
+			<div class="hover-list-wrap other-style">
+				<ul class="hover-list-outer">
+					<li>
+						<div class="hover-list-item">
+							<p>hover item 01</p>
+							<div class="hover-list-cont">
+								<div class="hover-cont-item">
+									<p>hover text 01</p>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="hover-list-item">
+							<p>hover item 02</p>
+							<div class="hover-list-cont">
+								<div class="hover-cont-item">
+									<p>hover text 02 hover text 02</p>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="hover-list-item">
+							<p>hover item 03</p>
+							<div class="hover-list-cont">
+								<div class="hover-cont-item">
+									<p>hover text 03 hover text 03 hover text 03 hover text 03</p>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="hover-list-item">
+							<p>hover item 04</p>
+							<div class="hover-list-cont">
+								<div class="hover-cont-item">
+									<p>hover text 04 hover text 04 hover text 04 hover text 04 hover text 04 hover text 04 hover text 04 hover text 04</p>
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+
+				<div class="hover-list-cont">
+					<div class="hover-cont-item">
+						<p>hover text 01</p>
+					</div>
+					<div class="hover-cont-item">
+						<p>hover text 02 hover text 02</p>
+					</div>
+					<div class="hover-cont-item">
+						<p>hover text 03 hover text 03 hover text 03 hover text 03</p>
+					</div>
+					<div class="hover-cont-item">
+						<p>hover text 04 hover text 04 hover text 04 hover text 04 hover text 04 hover text 04 hover text 04 hover text 04</p>
+					</div>
+				</div>
+			</div>
+			<style>
+				.other-style .hover-list-cont {
+					margin-top: 0;
+				}
+
+				.other-style .hover-list-outer li:hover .hover-list-item {
+					background: #000;
+				}
+
+				.other-style .hover-list-outer li:hover .hover-list-item > p {
+					color: #fff;
+				}
+
+				.other-style .hover-list-outer li:hover .hover-cont-item {
+					-webkit-transform: translateX(-50%);
+					transform: translateX(-50%);
+					top: 20px;
+					display: inline-block;
+				}
+
+				.other-style .hover-list-outer li:hover .hover-cont-item > p {
+					white-space: nowrap;
+				}
+			</style>
 		</div>
 		<!-- e : container -->
 
@@ -202,4 +311,5 @@
 		<!-- e : footer -->
 	</div>
 </body>
+
 </html>
