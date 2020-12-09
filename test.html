@@ -71,6 +71,7 @@
 				}
 
 				/* hover list */
+
 				.hover-list-outer {
 					max-width: 1120px;
 					border: 1px solid #000;
@@ -261,21 +262,6 @@
 						</div>
 					</li>
 				</ul>
-
-				<div class="hover-list-cont">
-					<div class="hover-cont-item">
-						<p>hover text 01</p>
-					</div>
-					<div class="hover-cont-item">
-						<p>hover text 02 hover text 02</p>
-					</div>
-					<div class="hover-cont-item">
-						<p>hover text 03 hover text 03 hover text 03 hover text 03</p>
-					</div>
-					<div class="hover-cont-item">
-						<p>hover text 04 hover text 04 hover text 04 hover text 04 hover text 04 hover text 04 hover text 04 hover text 04</p>
-					</div>
-				</div>
 			</div>
 			<style>
 				.other-style .hover-list-cont {
@@ -290,15 +276,16 @@
 					color: #fff;
 				}
 
-				.other-style .hover-list-outer li:hover .hover-cont-item {
-					-webkit-transform: translateX(-50%);
-					transform: translateX(-50%);
-					top: 20px;
-					display: inline-block;
+				.other-style .hover-list-outer li:hover .hover-list-cont {
+					position: absolute;
+					top: 45px;
+					left: -20%;
+					right: -20%;
 				}
 
-				.other-style .hover-list-outer li:hover .hover-cont-item > p {
-					white-space: nowrap;
+				.other-style .hover-list-outer li:hover .hover-cont-item {
+					position: static;
+					display: inline-block;
 				}
 			</style>
 		</div>
