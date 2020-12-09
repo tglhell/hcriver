@@ -111,7 +111,7 @@
 				/* hover list cont */
 				.hover-list-cont {
 					position: relative;
-					margin-top: 30px;
+					margin-top: 15px;
 				}
 
 				.hover-list-cont .hover-cont-item {
@@ -122,30 +122,71 @@
 					border-radius: 7px;
 				}
 
+				.hover-list-cont .hover-cont-item:before {
+					content: '';
+					-webkit-transform: rotate(45deg);
+					transform: rotate(45deg);
+					position: absolute;
+					top: -10px;
+					left: 50%;
+					width: 1px;
+					height: 10px;
+					margin-left: -3px;
+					background-color: #999;
+				}
+
+				.hover-list-cont .hover-cont-item:after {
+					content: '';
+					-webkit-transform: rotate(-45deg);
+					transform: rotate(-45deg);
+					position: absolute;
+					top: -9px;
+					left: 50%;
+					width: 1px;
+					height: 10px;
+					margin-left: 4px;
+					background-color: #999;
+				}
+
 				.hover-list-cont .hover-cont-item.active {
 					display: inline-block;
+				}
+
+				.hover-list-cont .hover-cont-item > p {
+					position: relative;
+				}
+
+				.hover-list-cont .hover-cont-item > p:before {
+					content: '';
+					position: absolute;
+					top: -6px;
+					left: 50%;
+					width: 14px;
+					height: 1px;
+					margin-left: -6px;
+					background-color: #fff;
 				}
 			</style>
 			<script>
 				$(function(){
 					$('.hover-list-outer li').on('mouseenter mouseleave', function(e){
-						let _thisIdx = $(this).index();
-						let itemWid = $(this).outerWidth(true);
+						let _this = $(this);
+						let _thisIdx = _this.index();
+						let itemWid = _this.width();
 						let contItem = $('.hover-list-cont .hover-cont-item');
 						let contItemWid = contItem.eq(_thisIdx).outerWidth();
 
 						if (e.type == 'mouseenter') {
-							$(this).addClass('on').siblings().removeClass('on');
+							_this.addClass('on').siblings().removeClass('on');
 							contItem.eq(_thisIdx).addClass('active').siblings().removeClass('active');
 							if (itemWid > contItemWid) {
-								posItem = (itemWid - contItemWid) / 2;
-								contItem.eq(_thisIdx).css('left', (itemWid * _thisIdx) + posItem);
+								posItem = -(itemWid - contItemWid) / 2;
 							} else {
 								posItem = (contItemWid - itemWid) / 2;
-								contItem.eq(_thisIdx).css('left', (itemWid * _thisIdx) - posItem);
 							}
+							contItem.eq(_thisIdx).css('left', (itemWid * _thisIdx) - posItem);
 						} else {
-							$(this).removeClass('on');
+							_this.removeClass('on');
 							contItem.eq(_thisIdx).removeClass('active');
 						}
 					});
