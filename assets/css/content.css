@@ -3,7 +3,7 @@
 .container .content .page-name-list.main li .page-name-item:before,
 .container .content .page-name-list.main li .page-name-item:after {content:none;}
 .container .content .page-name-outer.sub li .page-name-item .img {display:none;}
-.page-name-list li .page-name-item .img {overflow:hidden;display:inline-block;width:200px;margin-bottom:15px;border-radius:10px;box-shadow:3px 3px 3px rgba(0,0,0,.2);}
+.page-name-list li .page-name-item .img {overflow:hidden;display:inline-block;width:150px;margin-bottom:15px;border-radius:5px;box-shadow:3px 3px 3px rgba(0,0,0,.2);}
 .page-name-list li .page-name-item:hover .img {-webkit-transform:translateX(5px);transform:translateX(5px);}
 .page-name-list li .page-name-item.n-link .img img {opacity:.3;}
 
