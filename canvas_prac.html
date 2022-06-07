@@ -61,6 +61,186 @@
 		.my-canvas-02 {margin-left:20px;}
 		.btn-draw {padding:5px 10px;margin-left:10px;border:1px solid #000;}
 	</style>
+
+	<style>
+		.box {
+			width: 300px;
+			height: 300px;
+			margin-top: 30px;
+			border-radius: 5px;
+			box-shadow: 0 2px 30px rgba(black, .2);
+			background: lighten(#f0f4c3, 10%);
+			background-color: rgba(34, 6, 160, 0.3);
+			position: relative;
+			overflow: hidden;
+			/* transform: translate3d(0, 0, 0); */
+		}
+
+		.wave {
+			opacity: .4;
+			position: absolute;
+			top: 3%;
+			left: 50%;
+			background: #0af;
+			width: 500px;
+			height: 500px;
+			margin-left: -250px;
+			margin-top: -250px;
+			transform-origin: 50% 48%;
+			border-radius: 43%;
+			animation: drift 3000ms infinite linear;
+		}
+
+		.wave.-three {
+			animation: drift 8000ms infinite linear;
+		}
+
+		.wave.-two {
+			animation: drift 10000ms infinite linear;
+			opacity: .5;
+			background: yellow;
+		}
+
+		.box:after {
+			content: '';
+			display: block;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			background: linear-gradient(to bottom, rgba(#e8a, 1), rgba(#def, 0) 80%, rgba(white, .5));
+			z-index: 11;
+			/* transform: translate3d(0, 0, 0); */
+		}
+
+		/* .title {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			z-index: 1;
+			line-height: 300px;
+			text-align: center;
+			transform: translate3d(0, 0, 0);
+			color: white;
+			font-family: 'Nanum Gothic', sans-serif;
+			font-size: 24px;
+			text-shadow: 0 1px 0 rgba(black, .1);
+			text-indent: .3em;
+		} */
+
+		@keyframes drift {
+			from { transform: rotate(0deg); }
+			from { transform: rotate(360deg); }
+		}
+	</style>
+	<style>
+		.drawsvg {
+			margin-top: 30px;
+		}
+		.drawsvg,
+		.drawsvg *,
+		svg {
+			-webkit-transition: none;
+			transition: none;
+			width: 50%;
+			height: 150px;
+		}
+
+		.stroke {
+			stroke: #34c5ff;
+			stroke-width: 1px;
+			stroke-dasharray: 0 250;
+			stroke-opacity: 1;
+			fill: none;
+			-webkit-animation: stroke_offset 8s infinite;
+			animation: stroke_offset 8s infinite;
+			-webkit-animation-timing-function: cubic-bezier(.25, .46, .45, .94);
+			animation-timing-function: cubic-bezier(.25, .46, .45, .94);
+			-webkit-transition: none;
+			transition: none;
+		}
+
+		@-webkit-keyframes stroke_offset {
+			100%,
+			25% {
+				stroke-dasharray: 0 250;
+				stroke-opacity: 1
+			}
+			50%,
+			75% {
+				stroke-dasharray: 250 0;
+				stroke-opacity: .75
+			}
+			55%,
+			70% {
+				stroke-dasharray: 250 0;
+				stroke-opacity: 0
+			}
+		}
+
+		@keyframes stroke_offset {
+			100%,
+			25% {
+				stroke-dasharray: 0 250;
+				stroke-opacity: 1
+			}
+			50%,
+			75% {
+				stroke-dasharray: 250 0;
+				stroke-opacity: .75
+			}
+			55%,
+			70% {
+				stroke-dasharray: 250 0;
+				stroke-opacity: 0
+			}
+		}
+
+		.fill {
+			fill: #34c5ff;
+			fill-opacity: 0;
+			-webkit-animation: fill_offset 8s infinite;
+			animation: fill_offset 8s infinite;
+			-webkit-animation-timing-function: cubic-bezier(.25, .46, .45, .94);
+			animation-timing-function: cubic-bezier(.25, .46, .45, .94);
+		}
+
+		@-webkit-keyframes fill_offset {
+			100%,
+			25%,
+			35%,
+			90% {
+				fill-opacity: 0
+			}
+			50%,
+			70% {
+				fill-opacity: 1
+			}
+		}
+
+		@keyframes fill_offset {
+			100%,
+			25%,
+			35%,
+			90% {
+				fill-opacity: 0
+			}
+			50%,
+			70% {
+				fill-opacity: 1
+			}
+		}
+
+		#fade-text {
+			/* font-family: 'Alex Brush', cursive; */
+			font-size: 140px;
+		}
+
+		svg {
+			position: absolute
+		}
+	</style>
 </head>
 
 <body>
@@ -69,21 +249,19 @@
 		<div class="header">
 			<div class="header-cont">
 				<h1 class="h-title"><a href="/hcriver/index.html">Main Page</a></h1>
-				<a href="/hcriver/guide/tab.html" class="page-btn btn-prev" title="Tab">Tab</a>
-				<a href="/hcriver/guide/scroll.html" class="page-btn btn-next" title="Scroll">Scroll</a>
 			</div> 
 		</div>
 		<!-- e : header -->
 
 		<!-- s : container -->
 		<div class="container">
-			<div class="top-img" ir>
+			<!-- <div class="top-img" ir>
 				<picture>
 					<source srcset="/hcriver/assets/images/content/img_top_image_pc.jpg" media="(min-width: 768px)">
 					<source srcset="/hcriver/assets/images/content/img_top_image_m.jpg" media="(max-width: 767px)">
 					<img src="/hcriver/assets/images/content/img_top_image.jpg" alt="sky">
 				</picture>
-			</div>
+			</div> -->
 
 			<div class="content">
 				<h2 class="c-title" ir>Template Page List</h2>
@@ -93,7 +271,27 @@
 					<canvas class="my-canvas-02" width="200" height="200"></canvas>
 					<button class="btn-draw">Draw</button>
 				</div>
-					
+
+				<div class="drawsvg">
+					<svg version="1.1" viewbox="0 0 700 200">
+						<symbol id="fade-text">
+							<text x="43%" y="70%" text-anchor="middle">Anchors</text>
+							<text x="55%" y="50%" text-anchor="middle"></text>
+						</symbol>
+						<g>
+							<use class="stroke" xlink:href="#fade-text"/>
+							<use class="fill" xlink:href="#fade-text"/>
+						</g>
+					</svg>          
+				</div>
+
+				<div class="box">
+					<div class="wave -one"></div>
+					<div class="wave -two"></div>
+					<div class="wave -three"></div>
+					<!-- <div class="title">Wave</div> -->
+				</div>
+
 			</div>
 		</div>
 		<!-- e : container -->
