@@ -14,6 +14,9 @@ canvas {
 }
 
 .box {
+	position: relative;
+	overflow: hidden;
+	display: inline-block;
 	width: 300px;
 	height: 300px;
 	margin-top: 30px;
@@ -21,8 +24,7 @@ canvas {
 	box-shadow: 0 2px 30px rgba(black, .2);
 	background: lighten(#f0f4c3, 10%);
 	background-color: rgba(34, 6, 160, 0.3);
-	position: relative;
-	overflow: hidden;
+	vertical-align: middle;
 	/* transform: translate3d(0, 0, 0); */
 }
 
@@ -87,8 +89,7 @@ canvas {
 	margin-top: 30px;
 }
 .drawsvg,
-.drawsvg *,
-svg {
+.drawsvg :where(*, svg) {
 	-webkit-transition: none;
 	transition: none;
 	width: 50%;
@@ -183,8 +184,153 @@ svg {
 #fade-text {
 	/* font-family: 'Alex Brush', cursive; */
 	font-size: 140px;
+	font-weight: bold;
 }
 
-svg {
+.drawsvg svg {
 	position: absolute;
+}
+
+.btn-rotate {
+	position: relative;
+	display: inline-block;
+	width: 150px;
+	margin: 30px 0 0 30px;
+	text-indent: -9999px;
+	text-align: center;
+	line-height: 50px;
+	vertical-align: middle;
+}
+
+.btn-rotate:before,
+.btn-rotate:after {
+	content: attr(title);
+	transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+	transform-origin: 50% 50% -25px;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	display: block;
+	border: 4px solid #000;
+	font-weight: bold;
+	-webkit-font-smoothing: antialiased;
+	text-transform: uppercase;
+	text-indent: 0;
+	line-height: 42px;
+}
+
+.btn-rotate:after {
+	transform: rotateX(-90deg);
+	background-color: #000;
+	color: #fff;
+}
+
+.btn-rotate:hover:before {
+	transform: rotateX(90deg);
+}
+.btn-rotate:hover:after {
+	transform: rotateX(0deg);
+}
+
+.loader-box {
+	display: inline-block;
+	margin-lefT: 50px;
+	vertical-align: middle;
+}
+
+.loader {
+	max-width: 15rem;
+	width: 100%;
+	height: auto;
+	stroke-linecap: round;
+}
+
+.loader circle {
+	animation: preloader 3s ease-in-out infinite;
+	fill: none;
+	stroke-width: 3.5;
+	transform-origin: 170px 170px;
+	will-change: transform;
+}
+
+.loader circle:nth-of-type(1) {
+	stroke-dasharray: 550px;
+}
+
+.loader circle:nth-of-type(2) {
+	stroke-dasharray: 500px;
+	animation-delay: 0.15s;
+}
+
+.loader circle:nth-of-type(3) {
+	stroke-dasharray: 450px;
+	animation-delay: 0.3s;
+}
+
+.loader circle:nth-of-type(4) {
+	stroke-dasharray: 300px;
+	animation-delay: 0.45s;
+}
+
+@keyframes preloader {
+	50% {
+		transform: rotate(360deg);
+	}
+}
+
+.ocean-outer {
+	position: relative;
+	overflow: hidden;
+	height: 300px;
+	margin-top: -150px;
+}
+
+.ocean {
+	height: 5%;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	background: #015871;
+}
+
+.ocean-wave {
+	background: url(/hcriver/assets/images/prac/wave.svg) repeat-x;
+	position: absolute;
+	top: -170px;
+	width: 6400px;
+	height: 198px;
+	animation: wave 5s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
+	transform: translate3d(0, 0, 0);
+}
+
+.ocean-wave:nth-of-type(2) {
+	top: -155px;
+	animation: wave 5s cubic-bezier(0.36, 0.45, 0.63, 0.53) -0.125s infinite, swell 5s ease -1.25s infinite;
+	animation-delay: .25s;
+	opacity: 1;
+}
+
+@keyframes wave {
+	0% {
+		margin-left: 0;
+	}
+	100% {
+		margin-left: -1600px;
+	}
+}
+@keyframes swell {
+	0%,
+	100% {
+		transform: translate3d(0, -25px, 0);
+	}
+	50% {
+		transform: translate3d(0, 5px, 0);
+	}
+}
+
+.endWave{
+	display:none;
 }
