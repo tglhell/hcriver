@@ -1,5 +1,4 @@
-$(function(){
-	var ctx = document.querySelector('.my-canvas-01').getContext('2d');
+	const ctx = document.querySelector('.my-canvas-01').getContext('2d');
 	// ctx.fillStyle = "rgb(200,0,0)";
 	// ctx.fillRect (10, 10, 50, 50);
 
@@ -22,10 +21,11 @@ $(function(){
 	ctx.arc(90, 65, 5, 0, Math.PI * 2, true);  // Right eye
 	ctx.stroke();
 
-	$('.btn-draw').click(function(){
-		var ctx = document.querySelector('.my-canvas-02').getContext('2d');
-		var end = Math.PI * 2;
-		for (var i = 0; i < 100; i++) {
+	const btnDraw = document.querySelector('.btn-draw');
+	btnDraw.onclick = function () {
+		let ctx = document.querySelector('.my-canvas-02').getContext('2d');
+		let end = Math.PI * 2;
+		for (let i = 0; i < 100; i++) {
 			draw(i);
 		}
 
@@ -37,5 +37,4 @@ $(function(){
 				ctx.stroke();
 			}, delay * 20);
 		}
-	});
-});
+	}

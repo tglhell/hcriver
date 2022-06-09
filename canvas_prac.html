@@ -10,11 +10,11 @@
 	<link rel="stylesheet" href="/hcriver/assets/css/common.css">
 	<link rel="stylesheet" href="/hcriver/assets/css/content.css">
 	<link rel="stylesheet" href="/hcriver/assets/css/canvas_prac.css">
-	<script src="/hcriver/assets/js/lib/jquery.js"></script>
+	<!-- <script src="/hcriver/assets/js/lib/jquery.js"></script>
 	<script src="/hcriver/assets/js/lib/jquery-ui.js"></script>
 	<script src="/hcriver/assets/js/lib/jquery.nicescroll.min.js"></script>
 	<script src="/hcriver/assets/js/common.js"></script>
-	<script src="/hcriver/assets/js/canvas_prac.js"></script>
+	<script src="/hcriver/assets/js/canvas_prac.js"></script> -->
 </head>
 
 <body>
@@ -82,7 +82,21 @@
 					</svg>
 				</div>
 
-				<a href="none" title="Press Button" class="btn-rotate">Press Button</a>
+				<button title="Press Button" class="btn-rotate">Press Button</button>
+
+				<script>
+					const btnRotateAct = document.querySelector('.btn-rotate');
+					const ldBox = document.querySelector('.loader-box');
+					btnRotateAct.onclick = function() {
+						btnRotateAct.classList.toggle("active");
+						if (btnRotateAct.classList.contains('active')) {
+							ldBox.style.display = 'none';
+						} else {
+							ldBox.removeAttribute("style");
+							// ldBox.style.display = 'inline-block';
+						}
+					}
+				</script>
 
 			</div>
 		</div>
@@ -95,5 +109,7 @@
 		<!-- e : footer -->
 	</div>
 </body>
+
+<script src="/hcriver/assets/js/canvas_prac.js"></script>
 
 </html>
