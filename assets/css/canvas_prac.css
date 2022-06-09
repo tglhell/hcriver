@@ -289,7 +289,7 @@ canvas {
 	position: relative;
 	overflow: hidden;
 	height: 300px;
-	margin-top: -150px;
+	margin-top: -200px;
 }
 
 .ocean {
@@ -298,7 +298,6 @@ canvas {
 	position: absolute;
 	bottom: 0;
 	left: 0;
-	background: #015871;
 }
 
 .ocean-wave {
