@@ -214,7 +214,7 @@ canvas {
 	left: 0;
 	right: 0;
 	display: block;
-	border: 4px solid #000;
+	border: 4px solid #3fa2f3;
 	font-weight: bold;
 	-webkit-font-smoothing: antialiased;
 	text-transform: uppercase;
@@ -224,7 +224,7 @@ canvas {
 
 .btn-rotate:after {
 	transform: rotateX(-90deg);
-	background-color: #000;
+	background-color: #3fa2f3;
 	color: #fff;
 }
 
