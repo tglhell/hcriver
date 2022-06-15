@@ -21,7 +21,7 @@ canvas {
 	height: 300px;
 	margin-top: 30px;
 	border-radius: 5px;
-	box-shadow: 0 2px 30px rgba(black, .2);
+	box-shadow: 0 2px 30px rgba(0, 0, 0, .2);
 	background: lighten(#f0f4c3, 10%);
 	background-color: rgba(34, 6, 160, 0.3);
 	vertical-align: middle;
@@ -50,7 +50,7 @@ canvas {
 .wave.-two {
 	animation: drift 10000ms infinite linear;
 	opacity: .5;
-	background: yellow;
+	background: #e8a;
 }
 
 .box:after {
@@ -192,7 +192,7 @@ canvas {
 }
 
 .btn-rotate {
-	transition: width .5s cubic-bezier(0.19, 1, 0.22, 1);
+	transition: .3s cubic-bezier(0.19, 1, 0.22, 1);
 	position: relative;
 	display: inline-block;
 	width: 150px;
@@ -201,12 +201,14 @@ canvas {
 	text-align: center;
 	line-height: 50px;
 	vertical-align: middle;
+	-webkit-font-smoothing: antialiased;
 }
 
 .btn-rotate:before,
 .btn-rotate:after {
 	content: attr(title);
-	transition: transform .5s .5s cubic-bezier(0.19, 1, 0.22, 1);
+	transition: .3s .3s cubic-bezier(0.19, 1, 0.22, 1);
+	-ms-transform-origin: 50% 50% -25px;
 	transform-origin: 50% 50% -25px;
 	position: absolute;
 	top: 0;
