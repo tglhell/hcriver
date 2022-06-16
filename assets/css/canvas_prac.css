@@ -340,3 +340,37 @@ canvas {
 .endWave{
 	display:none;
 }
+
+.mySwiper {
+	position: relative;
+	overflow: hidden;
+	max-width: 100%;
+	max-height: 500px;
+	margin-top: 100px;
+}
+.mySwiper .swiper-wrapper {
+	transition-duration: .3s !important;
+}
+.mySwiper .swiper-slide {
+	padding-right: 30px;
+}
+.mySwiper.swiper-container-vertical > .swiper-scrollbar {
+	position: absolute;
+	right: 3px;
+	top: 1%;
+	z-index: 50;
+	width: 3px;
+	height: 98%;
+	border-radius: 10px;
+	background: rgba(0,0,0,0.1);
+}
+.mySwiper .swiper-scrollbar-drag {
+	transition-duration: .3s !important;
+	height: 100%;
+	width: 100%;
+	position: relative;
+	background: rgba(0,0,0,0.5);
+	border-radius: 10px;
+	left: 0;
+	top: 0;
+}
