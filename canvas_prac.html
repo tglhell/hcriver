@@ -288,6 +288,54 @@
 					// 	tabTar.css('left', tabLiWid * tabIdx);
 					// }
 				</script>
+
+				<div class="scroll-behavior-sample">
+					<h1 class="title">Smooth Anchor Scroll</h1>
+					<div class="scroll-container">
+						<div id="section1">
+							<h2>Section 1</h2>
+							<p>여기는 section 1입니다.</p>
+							<a href="#section2">Section 2로 부드럽게 이동해볼까요?</a>  
+						</div>
+	
+						<div id="section2">
+							<h2>Section 2</h2>
+							<p>여기는 section 2입니다.</p>
+							<a href="#section1">Section 1으로 돌아가요!</a>
+						</div>
+					</div>
+				</div>
+				<style>
+					.scroll-behavior-sample {
+						margin-top: 50px;
+					}
+					.scroll-behavior-sample .title {
+						text-align:center;
+						margin-bottom: 30px;
+					}
+					.scroll-behavior-sample .scroll-container{
+						scroll-behavior: smooth;
+						display: block;
+						text-align:center;
+						margin:auto;
+						overflow-y: scroll;
+						width: 350px;
+						height: 250px;
+					}
+					.scroll-behavior-sample .scroll-container a {
+						text-decoration: underline;
+					}
+					.scroll-behavior-sample #section1 {
+						height: 100%;
+						padding-top:20px;
+						background-color: aliceblue;
+					}
+					.scroll-behavior-sample #section2 {
+						height: 100%;
+						padding-top:20px;
+						background-color: yellow;
+					}
+				</style>
 			</div>
 		</div>
 		<!-- e : container -->
