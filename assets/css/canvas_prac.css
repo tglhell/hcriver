@@ -106,6 +106,7 @@ canvas {
 	animation: stroke_offset 8s infinite;
 	-webkit-animation-timing-function: cubic-bezier(.25, .46, .45, .94);
 	animation-timing-function: cubic-bezier(.25, .46, .45, .94);
+	/* animation-direction: alternate; */
 	-webkit-transition: none;
 	transition: none;
 }
